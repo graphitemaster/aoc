@@ -6,6 +6,7 @@
 #include <algorithm>
 
 struct rect {
+	int id; // used for p2 only
 	int x, y;
 	int w, h;
 };
@@ -51,9 +52,8 @@ int main(int argc, char **argv) {
 	std::vector<rect> rects;
 	char line[1024];
 	while (fgets(line, sizeof line, fp)) {
-		int id;
 		rect r;
-		sscanf(line, "#%d @ %d,%d: %dx%d", &id, &r.x, &r.y, &r.w, &r.h);
+		sscanf(line, "#%d @ %d,%d: %dx%d", &r.id, &r.x, &r.y, &r.w, &r.h);
 		rects.push_back(r);
 	}
 	fclose(fp);

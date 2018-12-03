@@ -17,7 +17,7 @@ struct grid {
 	void fill(const rect& r) {
 		for (int i = r.x; i < r.x + r.w; i++) {
 			for (int j = r.y; j < r.y + r.h; j++) {
-				m[(i << 15) | j]++;
+				m[(i << 16) | j]++;
 			}
 		}
 	}
@@ -25,7 +25,7 @@ struct grid {
 	bool test(const rect& r) {
 		for (int i = r.x; i < r.x + r.w; i++) {
 			for (int j = r.y; j < r.y + r.h; j++) {
-				if (m[(i << 15) | j] > 1) {
+				if (m[(i << 16) | j] > 1) {
 					return false;
 				}
 			}

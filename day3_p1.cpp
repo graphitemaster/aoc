@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
 
 #include <vector>
 #include <unordered_map>
 #include <algorithm>
 
-struct rect{
+struct rect {
 	int x, y;
 	int w, h;
 };
@@ -14,7 +13,7 @@ struct rect{
 struct grid {
 	std::unordered_map<int, int> m;
 
-	void fill(const rect& r) {
+	void fill(const rect &r) {
 		for (int i = r.x; i < r.x + r.w; i++) {
 			for (int j = r.y; j < r.y + r.h; j++) {
 				m[(i << 15) | j]++;
@@ -24,7 +23,8 @@ struct grid {
 
 	int overlapping_area() const {
 		return std::count_if(m.begin(),
-		                     m.end(), [](auto const& c) { return c.second > 1; });
+		                     m.end(),
+		                     [](auto const &c) { return c.second > 1; });
 	}
 };
 
